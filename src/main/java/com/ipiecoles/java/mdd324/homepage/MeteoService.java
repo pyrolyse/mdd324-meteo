@@ -21,7 +21,7 @@ public class MeteoService {
         Double temp;
         String temps;
 
-        String meteo = Utils.getPageContents("https://api.openweathermap.org/data/2.5/weather?q=Paris&appid=5dfc2a06c8157403e9107053a73aca92&lang=fr&main.temp=Celsius");
+        String meteo = Utils.getPageContents("https://api.openweathermap.org/data/2.5/weather?q=" + city.getCity() + "&appid=5dfc2a06c8157403e9107053a73aca92&lang=fr&main.temp=Celsius");
 
         //JSON
         Genson genson = new GensonBuilder().useRuntimeType(true).create();
@@ -50,7 +50,7 @@ public class MeteoService {
 
         coucher = df.format(sunset);
 
-
+        System.out.println(coucher);
 
         //-----------------
 
@@ -61,7 +61,7 @@ public class MeteoService {
 
         humidite = humidityint;
 
-
+        System.out.println(humidite);
 
 
         ArrayList icons = (ArrayList) map.get("weather");
@@ -82,6 +82,7 @@ public class MeteoService {
 
         temp = tempint;
 
+        System.out.println(temp);
 
         Meteo meteos = new Meteo(coucher, humidite, icon, lever, temp, temps);
 
